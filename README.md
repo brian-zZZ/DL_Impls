@@ -1,4 +1,4 @@
-## Customized single node multiple GPU launch script
+## Customized single node multiple GPU launch scripts
 * 小数据集[(花分类数据集)](http://download.tensorflow.org/example_images/flower_photos.tgz)复现
 * 数据集分成```train```和```val```，其内每种类别一个```folder```
 * ```CUDA_VISIBLE_DEVICES```中GPU数量要与```nproc_per_node```对应
