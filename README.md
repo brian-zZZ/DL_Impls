@@ -4,7 +4,8 @@
 * ```CUDA_VISIBLE_DEVICES```中GPU数量要与```nproc_per_node```对应
 
 ### Pre-training
-- ```OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0,2,3,5 python -m torch.distributed.launch --nproc_per_node=4 main_pretrain.py \
+```
+OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0,2,3,5 python -m torch.distributed.launch --nproc_per_node=4 main_pretrain.py \
     --accum_iter 1 \
     --model mae_vit_base_patch16 \
     --norm_pix_loss \
@@ -15,7 +16,8 @@
 ```
 
 ### Fine-tuning
-- ```OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0,2,3,5 python -m torch.distributed.launch --nproc_per_node=4 main_finetune.py \
+```
+OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0,2,3,5 python -m torch.distributed.launch --nproc_per_node=4 main_finetune.py \
     --accum_iter 4 \
     --batch_size 32 \
     --model vit_base_patch16 \
@@ -27,14 +29,13 @@
 ```
 
 ### Fine-tuning test results
+![testing top-1 acc](./perf_test_acc1.svg)
 * Best results: Acc@1 98.626 Acc@5 100.000 loss 0.184
-* ![testing top-1 acc](./perf_test_acc1.svg)
 * 100 epochs稍微over-fittings，最佳test结果出现在epoch-83(0-99)
 * 对比ViT：official pre-trained weights, 5 epochs fine-tuning: 97.5% top 1 acc
 
 
-## Origianl README
-- ###### ###### ######
+- ###### 分 ###### 割 ###### 线 ######
 ## Masked Autoencoders: A PyTorch Implementation
 
 <p align="center">
