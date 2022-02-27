@@ -117,7 +117,7 @@ def get_args_parser():
                         help='Use class token instead of global pool for classification')
 
     # Dataset parameters
-    parser.add_argument('--data_path', default='../datasets/flower_data/', type=str,
+    parser.add_argument('--data_path', default='/home/brian/datasets/flower_data/', type=str,
                         help='dataset path')
     parser.add_argument('--nb_classes', default=1000, type=int,
                         help='number of the classification types')

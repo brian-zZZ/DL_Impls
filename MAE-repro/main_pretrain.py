@@ -72,7 +72,7 @@ def get_args_parser():
                         help='epochs to warmup LR')
 
     # Dataset parameters
-    parser.add_argument('--data_path', default="/home/brian/DL_Learning/datasets/flower_data/", type=str,
+    parser.add_argument('--data_path', default="/home/brian/datasets/flower_data/", type=str,
                         help='dataset path')
 
     parser.add_argument('--output_dir', default='./pt_output_dir',
