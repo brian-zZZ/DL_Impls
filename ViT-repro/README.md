@@ -14,7 +14,8 @@ python train.py --num_classes 5 \
 ```
 ## Predict
 Excute the ```predict.py``` to predict a single pic with the fine-tuned weights abtained above.
-* Specify the ```img_path``` value in main function, then excute.
+* Specify the ```img_path``` value in main function.
+* Specify the ```model_weight_path``` value toward fine-tuned weights.
 ```
 python predict.py
 ```
