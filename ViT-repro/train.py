@@ -75,7 +75,7 @@ def main(args):
 
     if args.freeze_layers:
         for name, para in model.named_parameters():
-            # 除head, pre_logits外，其它权重全部冻结
+            # 除head, pre_logits外，其他权重全部冻结
             if "head" not in name and "pre_logits" not in name:
                 para.requires_grad_(False)
             else:
@@ -124,7 +124,7 @@ if __name__ == '__main__':
     # 数据集所在根目录
     # http://download.tensorflow.org/example_images/flower_photos.tgz
     parser.add_argument('--data-path', type=str,
-                        default="/home/brian/DL_Learning/datasets/flower_data/flower_photos/")
+                        default="/home/brian/datasets/flower_data/flower_photos/")
     parser.add_argument('--model-name', default='', help='create model name')
 
     # 预训练权重路径，如果不想载入就设置为空字符

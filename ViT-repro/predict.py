@@ -19,7 +19,7 @@ def main():
          transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])])
 
     # load image
-    img_path = "/home/brian/DL_Learning/datasets/flower_data/tulip.jpg"
+    img_path = "/home/brian/datasets/flower_data/tulip.jpg"
     assert os.path.exists(img_path), "file: '{}' dose not exist.".format(img_path)
     img = Image.open(img_path)
     plt.imshow(img)
