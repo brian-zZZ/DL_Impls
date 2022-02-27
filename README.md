@@ -18,4 +18,4 @@ Codes implementation for DL. Self-written or customized reproduction based on of
 
 ## MAE
 [Masked Autoencoders Are Scalable Vision Learners](https://arxiv.org/abs/2111.06377)
-Self-supervised learning for CV. Based on ViT. Scale mian CV tasks to SOTA.
+* Self-supervised learning for CV. Based on ViT. Scale mian CV tasks to SOTA.
