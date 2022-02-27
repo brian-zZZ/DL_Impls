@@ -32,7 +32,7 @@ OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0,2,3,5 python -m torch.distributed.launc
 ![testing top-1 acc](./perf_test_acc1.svg)
 * Best results: Acc@1 98.626 Acc@5 100.000 loss 0.184
 * 100 epochs稍微over-fittings，最佳test结果出现在epoch-83(0-99)
-* 对比ViT：official pre-trained weights, 5 epochs fine-tuning: 97.5% top 1 acc
+* 对比ViT：official pre-trained weights, 10 epochs fine-tuning: 97.5% top 1 acc
 
 
 - ###### 分 ###### 割 ###### 线 ######
