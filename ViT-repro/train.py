@@ -75,7 +75,7 @@ def main(args):
 
     if args.freeze_layers:
         for name, para in model.named_parameters():
-            # 除head, pre_logits外，其他权重全部冻结
+            # 除head, pre_logits外，其它权重全部冻结
             if "head" not in name and "pre_logits" not in name:
                 para.requires_grad_(False)
             else:
