@@ -14,7 +14,7 @@ A novel sequence to sequence framework utilizes the **self-attention mechanism**
 # Usage
 
 ## WMT'16 Multimodal Translation: de-en
-Before running the scripts. Install env dependency.
+Before running the scripts. Install env dependency. \
 ```pip install -r 'requirements.txt'```
 
 ### 0) Download the spacy language model.
@@ -25,7 +25,7 @@ python -m spacy download de
 ```
 - Way 2. If Way 1 encounter connection error.
   - Download [en_core_web_sm-2.3.0](https://objects.githubusercontent.com/github-production-release-asset-2e65be/84940268/cb2afe00-ab05-11ea-8bb0-700d075263a6?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20220227%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220227T144450Z&X-Amz-Expires=300&X-Amz-Signature=6cd773612329fbc6778823277174151ce17efc10b18c04269ac4dbedec0f24e3&X-Amz-SignedHeaders=host&actor_id=49059409&key_id=0&repo_id=84940268&response-content-disposition=attachment%3B%20filename%3Den_core_web_sm-2.3.0.tar.gz&response-content-type=application%2Foctet-stream) and [de_core_news_sm-2.3.0](https://objects.githubusercontent.com/github-production-release-asset-2e65be/84940268/4fc94c80-ab05-11ea-975e-c073a9557566?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20220227%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220227T145721Z&X-Amz-Expires=300&X-Amz-Signature=f110df827abfb6c099323f0d0da63a22caeadcc1b5bd062dc574cd2295a22512&X-Amz-SignedHeaders=host&actor_id=49059409&key_id=0&repo_id=84940268&response-content-disposition=attachment%3B%20filename%3Dde_core_news_sm-2.3.0.tar.gz&response-content-type=application%2Foctet-stream) to local.
-  - Pip install these two packages identically
+  - Pip install these two packages identically. \
   ```pip install 'some_dir/pk'```
 
 ### 1) Preprocess the data with torchtext and spacy.
