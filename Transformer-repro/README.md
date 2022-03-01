@@ -41,6 +41,7 @@ python train.py --data_pkl m30k_deen_shr.pkl \
   --proj_share_weight \
   --output_dir output \
   --device_num 0 \
+  ----use_tb \
   --label_smoothing
 ```
 
