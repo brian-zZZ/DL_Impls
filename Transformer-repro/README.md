@@ -50,6 +50,9 @@ python train.py --data_pkl m30k_deen_shr.pkl \
 python translate.py -data_pkl m30k_deen_shr.pkl -model trained.chkpt -output prediction.txt
 ```
 
+### Appendix: BPE-subword
+Details about Byte Pair Encoding could be found at my [bpe-subword repo](https://github.com/brian-zZZ/DL_Miscs/tree/main/bpe-subword)
+
 ## [(WIP)] WMT'17 Multimodal Translation: de-en w/ BPE 
 ### 1) Download and preprocess the data with bpe:
 
@@ -87,14 +90,7 @@ python train.py -data_pkl ./bpe_deen/bpe_vocab.pkl -train_path ./bpe_deen/deen-t
   - target embedding / pre-softmax linear layer weight sharing. 
  
   
-## Testing 
-- coming soon.
----
-# TODO
-  - Evaluation on the generated text.
-  - Attention weight plot.
 ---
 # Acknowledgement
 - The byte pair encoding parts are borrowed from [subword-nmt](https://github.com/rsennrich/subword-nmt/).
 - The project structure, some scripts and the dataset preprocessing steps are heavily borrowed from [OpenNMT/OpenNMT-py](https://github.com/OpenNMT/OpenNMT-py).
-- Thanks for the suggestions from @srush, @iamalbert, @Zessay, @JulesGM, @ZiJianZhao, and @huanghoujing.
