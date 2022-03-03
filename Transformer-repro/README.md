@@ -51,8 +51,8 @@ python translate.py -data_pkl m30k_deen_shr.pkl -model trained.chkpt -output pre
 ```
 
 ### Appendix: BPE-subword
-Details about Byte Pair Encoding could be found at my [bpe-subword repo](https://github.com/brian-zZZ/DL_Miscs/tree/main/bpe-subword)
- \
+Details about Byte Pair Encoding could be found at my [bpe-subword repo](https://github.com/brian-zZZ/DL_Miscs/tree/main/bpe-subword). /
+
 ## [(WIP)] WMT'17 Multimodal Translation: de-en w/ BPE 
 ### 1) Download and preprocess the data with bpe:
 
