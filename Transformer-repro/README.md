@@ -115,5 +115,7 @@ python translate.py -data_pkl m30k_deen_shr.pkl -model trained.chkpt -output pre
 ---
 # Acknowledgement
 - The byte pair encoding parts are borrowed from [subword-nmt](https://github.com/rsennrich/subword-nmt/).
-- The project structure, some scripts and the dataset preprocessing steps are heavily borrowed from [OpenNMT/OpenNMT-py](https://github.com/OpenNMT/OpenNMT-py).
-- Thanks for the suggestions from @srush, @iamalbert, @Zessay, @JulesGM, @ZiJianZhao, and @huanghoujing.
+- The project structure, some scripts and the dataset preprocessing steps are heavily borrowed from 
+  [OpenNMT/OpenNMT-py](https://github.com/OpenNMT/OpenNMT-py).
+- This repo is heavily borrowed from [attention-is-all-you-need-pytorch](https://github.com/jadore801120/attention-is-all-you-need-pytorch).
+  Thanks a lot.
