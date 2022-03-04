@@ -40,10 +40,14 @@ _VAL_DATA_SOURCES = [
      "src": "newstest2013.de"}]
 
 _TEST_DATA_SOURCES = [
-    {"url": "https://storage.googleapis.com/tf-perf-public/" \
-                "official_transformer/test_data/newstest2014.tgz",
-     "trg": "newstest2014.en",
-     "src": "newstest2014.de"}]
+    {# "url": "https://storage.googleapis.com/tf-perf-public/" \
+     #            "official_transformer/test_data/newstest2014.tgz",
+     # "trg": "newstest2014.en",
+     # "src": "newstest2014.de"
+     "url": "http://data.statmt.org/wmt17/translation-task/dev.tgz",
+     "trg": "newstest2012.en",
+     "src": "newstest2012.de"}
+     ]
 
 
 class TqdmUpTo(tqdm):
@@ -54,6 +58,7 @@ class TqdmUpTo(tqdm):
 
 
 def file_exist(dir_name, file_name):
+    '''Return file_path if src or trg file exist, else return None'''
     # os.walk()逐层游走，迭代生成：当前路径, 当前路径下的子文件夹list, 当前路径下的文件list
     for sub_dir, _, files in os.walk(dir_name):
         if file_name in files:
@@ -92,11 +97,13 @@ def _download_file(download_dir, url):
     else:
         sys.stderr.write(f"Downloading from {url} to {filename}.\n")
         with TqdmUpTo(unit='B', unit_scale=True, miniters=1, desc=filename) as t:
-            urllib.request.urlretrieve(url, filename=filename, reporthook=t.update_to)
+            urllib.request.urlretrieve(url, filename=os.path.join('./data', filename),
+                                        reporthook=t.update_to)
     return filename
 
 
 def get_raw_files(raw_dir, sources):
+    '''Return src and trg row files' path via a dict'''
     raw_files = { "src": [], "trg": [], }
     for d in sources:
         src_file, trg_file = download_and_extract(raw_dir, d["url"], d["src"], d["trg"])
@@ -111,6 +118,7 @@ def mkdir_if_needed(dir_name):
 
 
 def compile_files(raw_dir, raw_files, prefix):
+    '''Merge the src/trg files of two languages to concenate a raw-src/trg file'''
     src_fpath = os.path.join(raw_dir, f"raw-{prefix}.src")
     trg_fpath = os.path.join(raw_dir, f"raw-{prefix}.trg")
 
@@ -126,7 +134,7 @@ def compile_files(raw_dir, raw_files, prefix):
                     f'    - SRC: {src_inf}, and\n' \
                     f'    - TRG: {trg_inf}.\n')
             with open(src_inf, newline='\n') as src_inf, open(trg_inf, newline='\n') as trg_inf:
-                cntr = 0
+                cntr = 0 # Counter for checking
                 for i, line in enumerate(src_inf):
                     cntr += 1
                     src_outf.write(line.replace('\r', ' ').strip() + '\n')
@@ -141,13 +149,16 @@ def encode_file(bpe, in_file, out_file):
     sys.stderr.write(f"Read raw content from {in_file} and \n"\
             f"Write encoded content to {out_file}\n")
     
+    # Use codecs lib to open langauge raw file such as 'de-en.en'
     with codecs.open(in_file, encoding='utf-8') as in_f:
         with codecs.open(out_file, 'w', encoding='utf-8') as out_f:
             for line in in_f:
+                # Utilize the process_line method from apply_bpe instance to encode single line.
                 out_f.write(bpe.process_line(line))
 
 
 def encode_files(bpe, src_in_file, trg_in_file, data_dir, prefix):
+    '''Encode raw lang files with bpe'''
     src_out_file = os.path.join(data_dir, f"{prefix}.src")
     trg_out_file = os.path.join(data_dir, f"{prefix}.trg")
 
@@ -180,11 +191,11 @@ def main():
     opt = parser.parse_args()
 
     # Create folder if needed.
-    mkdir_if_needed(opt.raw_dir)
-    mkdir_if_needed(opt.data_dir)
+    mkdir_if_needed(opt.raw_dir) # Directory to save raw files to be download soon
+    mkdir_if_needed(opt.data_dir) # Directory to save bpe encoded files
 
     # Download and extract raw data.
-    raw_train = get_raw_files(opt.raw_dir, _TRAIN_DATA_SOURCES)
+    raw_train = get_raw_files(opt.raw_dir, _TRAIN_DATA_SOURCES) # Dict
     raw_val = get_raw_files(opt.raw_dir, _VAL_DATA_SOURCES)
     raw_test = get_raw_files(opt.raw_dir, _TEST_DATA_SOURCES)
 
@@ -197,14 +208,20 @@ def main():
     opt.codes = os.path.join(opt.data_dir, opt.codes)
     if not os.path.isfile(opt.codes):
         sys.stderr.write(f"Collect codes from training data and save to {opt.codes}.\n")
+        # Learn Byte Pair Encoding from input corpus to generate a BPE coded file.
+        # A BPE coded file list the byte-pairs according to the ocurrence frequency.
+        # func learn_bpe(infile_names, outfile_name, num_symbols, min_frequency=2, verbose=False, is_dict=False, total_symbols=False)
         learn_bpe(raw_train['src'] + raw_train['trg'], opt.codes, opt.symbols, opt.min_frequency, True)
     sys.stderr.write(f"BPE codes prepared.\n")
 
     sys.stderr.write(f"Build up the tokenizer.\n")
-    with codecs.open(opt.codes, encoding='utf-8') as codes: 
+    with codecs.open(opt.codes, encoding='utf-8') as codes:
+        # Apply the BPE coded file to the corpus to generate encoded corpus.
+        # class (apply_bpe) BPE init(codes, merges=-1, separator='@@', vocab=None, glossaries=None)
         bpe = BPE(codes, separator=opt.separator)
 
     sys.stderr.write(f"Encoding ...\n")
+    # Pass the built apply_bpe instance to encode corpus.
     encode_files(bpe, train_src, train_trg, opt.data_dir, opt.prefix + '-train')
     encode_files(bpe, val_src, val_trg, opt.data_dir, opt.prefix + '-val')
     encode_files(bpe, test_src, test_trg, opt.data_dir, opt.prefix + '-test')
@@ -337,5 +354,5 @@ def main_wo_bpe():
 
 
 if __name__ == '__main__':
-    main_wo_bpe()
-    #main()
+    # main_wo_bpe()
+    main()

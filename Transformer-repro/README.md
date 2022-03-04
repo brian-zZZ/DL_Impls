@@ -84,7 +84,9 @@ python train.py --data_pkl ./data/multi30k/m30k_deen_shr.pkl \
 
 ### 3) Test the model
 ```bash
-python translate.py -data_pkl m30k_deen_shr.pkl -model trained.chkpt -output prediction.txt
+python translate.py -data_pkl ./data/multi30k/m30k_deen_shr.pkl \
+  -model ./output/NMT_Task1/model.chkpt \
+  -output ./output/NMT_Task1/prediction.txt
 ```
 
 ---
