@@ -29,19 +29,20 @@ python -m spacy download de
 
 ### 1) Preprocess the data with torchtext and spacy.
 ```bash
-python preprocess.py -lang_src de -lang_trg en -share_vocab -save_data m30k_deen_shr.pkl
+python preprocess.py -lang_src de -lang_trg en -share_vocab \
+  -save_data ./data/multi30k/m30k_deen_shr.pkl
 ```
 
 ### 2) Train the model
 Single GPU. Specify the CUDA device number by ```--device_num```.
 ```bash
-python train.py --data_pkl m30k_deen_shr.pkl \
+python train.py --data_pkl ./data/multi30k/m30k_deen_shr.pkl \
+  --output_dir ./output/NMT_Task1 \
   -b 256 -warmup 128000 --epoch 400 \
   --embs_share_weight \
   --proj_share_weight \
-  --output_dir output \
   --device_num 0 \
-  ----use_tb \
+  --use_tb \
   --label_smoothing
 ```
 
@@ -50,21 +51,36 @@ python train.py --data_pkl m30k_deen_shr.pkl \
 python translate.py -data_pkl m30k_deen_shr.pkl -model trained.chkpt -output prediction.txt
 ```
 
-### Appendix: BPE-subword
-Details about Byte Pair Encoding could be found at my [bpe-subword repo](https://github.com/brian-zZZ/DL_Miscs/tree/main/bpe-subword).
 
-## [(WIP)] WMT'17 Multimodal Translation: de-en w/ BPE 
-### 1) Download and preprocess the data with bpe:
 
-> Since the interfaces is not unified, you need to switch the main function call from `main_wo_bpe` to `main`.
-
+## [(WIP)] WMT'17 Multimodal Translation: de-en w/ BPE
+### 1) Preprocess the data with bpe
+#### Option1: Locally
+**The advantage of operating locally is that this way can be easily costimize to other local dataset.** \
+- Download [wmt17 training set](http://data.statmt.org/wmt17/translation-task/training-parallel-nc-v12.tgz) and
+[wmt17 dev set](http://data.statmt.org/wmt17/translation-task/dev.tgz)
+- **Specify ```* SOURCES``` locally and correctly before execution**
 ```bash
-python preprocess.py -raw_dir /tmp/raw_deen -data_dir ./bpe_deen -save_data bpe_vocab.pkl -codes codes.txt -prefix deen
+python preprocess_local.py --raw_dir ./data/raw_deen --bpe_dir ./data/bpe_deen \
+  --save_data bpe_vocab.pkl --codes codes.txt --prefix deen --verbose
+```
+
+#### Option2: Online
+> Since the interfaces is not unified, you need to switch the main function call from `main_wo_bpe` to `main` at ```preprocess.py```.
+```bash
+python preprocess.py -raw_dir ./data/raw_deen -data_dir ./data/bpe_deen \
+  -save_data bpe_vocab.pkl -codes codes.txt -prefix deen
 ```
 
 ### 2) Train the model
 ```bash
-python train.py -data_pkl ./bpe_deen/bpe_vocab.pkl -train_path ./bpe_deen/deen-train -val_path ./bpe_deen/deen-val -log deen_bpe -embs_share_weight -proj_share_weight -label_smoothing -output_dir output -b 256 -warmup 128000 -epoch 400
+python train.py --data_pkl ./data/bpe_deen/bpe_vocab.pkl \
+  --train_path ./data/bpe_deen/deen-train \
+  --val_path ./data/bpe_deen/deen-val \
+  --output_dir ./output/NMT_Task2 \
+  --epoch 400 -b 128 -warmup 128000 \
+  --embs_share_weight --proj_share_weight \
+  --use_tb --device_num 0 --label_smoothing
 ```
 
 ### 3) Test the model (not ready)
@@ -90,7 +106,14 @@ python train.py -data_pkl ./bpe_deen/bpe_vocab.pkl -train_path ./bpe_deen/deen-t
   - target embedding / pre-softmax linear layer weight sharing. 
  
   
+## Testing 
+- coming soon.
+---
+# TODO
+  - Evaluation on the generated text.
+  - Attention weight plot.
 ---
 # Acknowledgement
 - The byte pair encoding parts are borrowed from [subword-nmt](https://github.com/rsennrich/subword-nmt/).
 - The project structure, some scripts and the dataset preprocessing steps are heavily borrowed from [OpenNMT/OpenNMT-py](https://github.com/OpenNMT/OpenNMT-py).
+- Thanks for the suggestions from @srush, @iamalbert, @Zessay, @JulesGM, @ZiJianZhao, and @huanghoujing.
