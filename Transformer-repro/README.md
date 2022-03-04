@@ -56,10 +56,10 @@ python translate.py -data_pkl m30k_deen_shr.pkl -model trained.chkpt -output pre
 ## [(WIP)] WMT'17 Multimodal Translation: de-en w/ BPE
 ### 1) Preprocess the data with bpe
 #### Option1: Locally
-**The advantage of operating locally is that this way can be easily costimize to other local dataset.** \
+*/The advantage of operating locally is that this way can be easily costimize to other local dataset./*
 - Download [wmt17 training set](http://data.statmt.org/wmt17/translation-task/training-parallel-nc-v12.tgz) and
 [wmt17 dev set](http://data.statmt.org/wmt17/translation-task/dev.tgz)
-- **Specify ```* SOURCES``` locally and correctly before execution**
+- */Specify ```*SOURCES``` locally and correctly before execution/*
 ```bash
 python preprocess_local.py --raw_dir ./data/raw_deen --bpe_dir ./data/bpe_deen \
   --save_data bpe_vocab.pkl --codes codes.txt --prefix deen --verbose
