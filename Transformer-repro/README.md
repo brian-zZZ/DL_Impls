@@ -15,42 +15,6 @@ A novel sequence to sequence framework utilizes the **self-attention mechanism**
 Before running the scripts. Install env dependency. \
 ```pip install -r 'requirements.txt'```
 
-## WMT'17 Multimodal Translation: de-en w/ BPE
-### 1) Preprocess the data with bpe
-#### Option1: Locally
-***The advantage of operating locally is that this way can be easily costimize to other local dataset.***
-- Download [wmt17 training set](http://data.statmt.org/wmt17/translation-task/training-parallel-nc-v12.tgz) and
-[wmt17 dev set](http://data.statmt.org/wmt17/translation-task/dev.tgz)
-- ***Specify ```*SOURCE``` locally and correctly before execution***
-```bash
-python preprocess_local.py --raw_dir ./data/raw_deen --bpe_dir ./data/bpe_deen \
-  --save_data bpe_vocab.pkl --codes codes.txt --prefix deen --verbose
-```
-
-#### Option2: Online
-> Since the interfaces is not unified, you need to switch the main function call from `main_wo_bpe` to `main` at ```preprocess.py```.
-```bash
-python preprocess.py -raw_dir ./data/raw_deen -data_dir ./data/bpe_deen \
-  -save_data bpe_vocab.pkl -codes codes.txt -prefix deen
-```
-
-### 2) Train the model
-```bash
-python train.py --data_pkl ./data/bpe_deen/bpe_vocab.pkl \
-  --train_path ./data/bpe_deen/deen-train \
-  --val_path ./data/bpe_deen/deen-val \
-  --output_dir ./output/NMT_Task2 \
-  --epoch 400 -b 128 -warmup 128000 \
-  --embs_share_weight --proj_share_weight \
-  --use_tb --device_num 0 --label_smoothing
-```
-
-### 3) Test the model (not ready)
-- TODO:
-  - Load vocabulary.
-  - Perform decoding after the translation.
-
-
 ## WMT'16 Multimodal Translation: de-en
 ### 0) Download the spacy language model.
 - Way 1
@@ -89,8 +53,46 @@ python translate.py -data_pkl ./data/multi30k/m30k_deen_shr.pkl \
   -output ./output/NMT_Task1/prediction.txt
 ```
 
+## WMT'17 Multimodal Translation: de-en w/ BPE
+### 1) Preprocess the data with bpe
+#### Option1: Locally
+***The advantage of operating locally is that this way can be easily costimize to other local dataset.***
+- Download [wmt17 training set](http://data.statmt.org/wmt17/translation-task/training-parallel-nc-v12.tgz) and
+[wmt17 dev set](http://data.statmt.org/wmt17/translation-task/dev.tgz)
+- ***Specify ```*SOURCE``` locally and correctly before execution***
+```bash
+python preprocess_local.py --raw_dir ./data/raw_deen --bpe_dir ./data/bpe_deen \
+  --save_data bpe_vocab.pkl --codes codes.txt --prefix deen --verbose
+```
+
+#### Option2: Online
+> Since the interfaces is not unified, you need to switch the main function call from `main_wo_bpe` to `main` at ```preprocess.py```.
+```bash
+python preprocess.py -raw_dir ./data/raw_deen -data_dir ./data/bpe_deen \
+  -save_data bpe_vocab.pkl -codes codes.txt -prefix deen
+```
+
+### 2) Train the model
+```bash
+python train.py --data_pkl ./data/bpe_deen/bpe_vocab.pkl \
+  --train_path ./data/bpe_deen/deen-train \
+  --val_path ./data/bpe_deen/deen-val \
+  --output_dir ./output/NMT_Task2 \
+  --epoch 400 -b 128 -warmup 128000 \
+  --embs_share_weight --proj_share_weight \
+  --use_tb --device_num 0 --label_smoothing
+```
+
+### 3) Test the model (Supplement done)
+```bash
+python translate.py -data_pkl ./data/bpe_deen/bpe_vocab.pkl \
+  -test_path ./data/bpe_deen/deen-test \
+  -model ./output/NMT_Task2/model.chkpt \
+  -output ./output/NMT_Task2/prediction.txt
+```
+
 ---
-# Performance
+# Performance (task1)
 ## Training
 
 <p align="center">
