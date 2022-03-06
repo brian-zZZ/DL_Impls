@@ -4,10 +4,10 @@ A Pytorch implementation. Pre-train BERT from scratch.
 ## Pre-training
 ### 0) Corpus preparation
 BERT is originally pre-trained on BooksCorpus (800M words) and English Wikipedia (2,500M words), for simplicity,
-here we pre-trained on a relatively small corpus: 
+here we pre-train on a relatively small corpus: 
 [wikitext-2](https://s3.amazonaws.com/research.metamind.io/wikitext/wikitext-2-v1.zip').
 > Note that wikitext-2 corpus is borrowed from chapter 
-['The Dataset for Pretraining BERT]('https://d2l.ai/chapter_natural-language-processing-pretraining/bert-dataset.html)
+['The Dataset for Pretraining BERT'](https://d2l.ai/chapter_natural-language-processing-pretraining/bert-dataset.html)
 of Dive Into Deep Learing (Li Mu, etc).
 - Download and extract the wikitext-2 corpus.
 
