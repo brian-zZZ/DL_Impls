@@ -9,7 +9,7 @@ here we pre-train on a relatively small corpus:
 > Note that wikitext-2 corpus is borrowed from chapter 
 ['The Dataset for Pretraining BERT'](https://d2l.ai/chapter_natural-language-processing-pretraining/bert-dataset.html)
 of Dive Into Deep Learing (Li Mu, etc).
-- Download and extract the wikitext-2 corpus.
+- Download and extract the wikitext-2 corpus to ```'./data/wikitext-2/'```.
 
 ### 1) Build vocab
 ```bash
