@@ -1,5 +1,5 @@
 # BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
-A Pytorch implementation. Pre-train BERT from scratch.
+A Pytorch implementation. **Pre-train BERT from scratch.**
 
 ## Pre-training
 ### 0) Corpus preparation
