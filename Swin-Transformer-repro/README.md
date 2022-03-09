@@ -5,6 +5,7 @@ Swim-Transformer can serve as a backbone from most of CV tasks. Swim-Transformer
 - More over, Swim-Transformer can act as the backbone, replacing CNNs, in structural models.
 
 ## Notes and insights
+To be update.
 
 
 ## Usage
