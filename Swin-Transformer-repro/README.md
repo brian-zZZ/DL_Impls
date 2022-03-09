@@ -1,4 +1,4 @@
-# Swim-Transformer from image classification
+# Swim-Transformer for image classification
 Swim-Transformer can serve as a backbone from most of CV tasks. Swim-Transformer and it's variants have dominate lot's of tasks. (2022/3/8)
 - Here is a image classification implementation.
 - To scale to other tasks, simply adapt the ```head``` from classification to others, such as segmentation.
