@@ -28,6 +28,7 @@ python main_finetune.py --num_classes 5 \
 > ```pt```: pre-trained, ```fs```: from scratch
 
 ```b_in21k_pt``` performs best, let alone ```l_pt``` is bigger in size. Train from scratch converges obviously slower.
+This result emphasize the importance of the amout of dataset, in21k is almost 10 time bigger.
 
 
 
