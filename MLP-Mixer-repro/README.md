@@ -22,7 +22,7 @@ python main_finetune.py --num_classes 5 \
 
 * Results
 <p align="center">
-<img src="metrics_comp.tif" width="400">
+<img src="metrics_comp.png" width="400">
 </p>
 > ```pt```: pre-trained, ```fs```: from scratch
 ```b_in21k_pt``` performs best, let alone ```l_pt``` is bigger in size. Train from scratch converges obviously slower.
