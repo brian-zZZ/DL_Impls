@@ -1,13 +1,13 @@
 # MLP-Mixer for image classification in CV
-**Attention: This implementation can load the offical pre-trained weights, both share the same namespace.**
-> Note: The offical pre-trained weights refer to the [```timm``` library](https://github.com/rwightman/pytorch-image-models) release.
+**Attention: This implementation can load the official pre-trained weights, both share the same namespace.**
+> Note: The official pre-trained weights refer to the [```timm``` library](https://github.com/rwightman/pytorch-image-models) release.
 
 ## Usage
 ### Dataset
 [Flower classification dataset](http://download.tensorflow.org/example_images/flower_photos.tgz)
 
 ### Pre-train
-In the original paper, the models are pre-trained in ImageNet-1K or ImageNet-22K, which are both natural image datasets.
+In the original paper, the models are pre-trained in ImageNet-1K or ImageNet-21K, which are both natural image datasets.
 
 ### Fine-tune
 Excute the ```main_finetune.py``` with scripts below to fine-tune with pre-trained weights.
@@ -27,8 +27,8 @@ python main_finetune.py --num_classes 5 \
 
 > ```pt```: pre-trained, ```fs```: from scratch
 
-```b_in21k_pt``` performs best, let alone ```l_pt``` is bigger in size. Train from scratch converges obviously slower.
-This result emphasize the importance of the amout of dataset, in21k is almost 10 time bigger.
+```b_in21k_pt``` performs best, let alone ```l_pt``` is bigger in size. Training from scratch converges obviously slower.
+This result emphasizes the importance of the size of dataset in pre-train stage, in21k is almost 10 time bigger.
 
 
 
