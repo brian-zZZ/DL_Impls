@@ -54,7 +54,7 @@ class MlpMixer(nn.Module):
         num_classes: 
     """
     def __init__(self, num_classes=1000, img_size=224, in_channels=3, patch_size=16,
-                    num_blocks=8, embed_dim=512, mlp_ratio=(0.5, 4.0), drop_rate=0.1, stem_norm=False):
+                    num_blocks=8, embed_dim=512, mlp_ratio=(0.5, 4.0), drop_rate=0., stem_norm=False):
         super().__init__()
         assert (img_size % patch_size) == 0, 'Image size must be divisible by patch size'
         num_patches = (img_size // patch_size) ** 2
