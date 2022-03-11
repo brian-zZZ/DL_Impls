@@ -19,14 +19,14 @@ python main_finetune.py --num_classes 5 \
     --data-path '/home/brian/datasets/flower_data/flower_photos' \
     --pretrained --device 'cuda:0'
 ```
-> ```pt```: pre-trained, ```fs```: from scratch
-```b_in21k_pt``` performs best, let alone ```l_pt``` is bigger in size. Train from scratch converges obviously slower.
+
 * Results
 <p align="center">
 <img src="metrics_comp.png" width="800">
 </p>
 
 > ```pt```: pre-trained, ```fs```: from scratch
+
 ```b_in21k_pt``` performs best, let alone ```l_pt``` is bigger in size. Train from scratch converges obviously slower.
 
 
