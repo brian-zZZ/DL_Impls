@@ -1,5 +1,8 @@
-# gMLP for image classification in CV
-* Paper: [Pay Attention to MLPs](https://arxiv.org/abs/2105.08050), Google Research, Brain Team, June, 2021. \
+# gMLP: [Pay Attention to MLPs](https://arxiv.org/abs/2105.08050), Google Brain, June 2021.
+gMLP performs better than MLP-Mixer, further more, gMLP attains competitive results in various tasks, including both CV and NLP. \
+The most impressive conclusion from the paper is that Attention may be unnecessary for Transformers, 
+meanwhile Attention may introduce more inductive bias, which is importance for downstream tasks that require cross-sentence infomation. \
+
 **Attention: This implementation can load the official pre-trained weights, both share the same namespace.**
 > Note: The official pre-trained weights refer to the [```timm``` library](https://github.com/rwightman/pytorch-image-models) release.
 
@@ -8,7 +11,7 @@
 [Flower classification dataset](http://download.tensorflow.org/example_images/flower_photos.tgz)
 
 ### Pre-train
-In the original paper, the models are pre-trained in ImageNet-1K or ImageNet-21K, which are both natural image datasets.
+In the original paper, the models are pre-trained in ImageNet-1k , which are both natural image datasets.
 
 ### Fine-tune
 Excute the ```main_finetune.py``` with scripts below to fine-tune with pre-trained weights.
