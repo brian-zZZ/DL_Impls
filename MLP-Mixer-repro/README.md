@@ -21,17 +21,11 @@ python main_finetune.py --num_classes 5 \
 ```
 
 * Results
+
+> From top-left to bottom-right, train acc, loss and val acc, loss
 <p align="center">
-<img src="metrics_comp.png" width="800">
+<img src="result.png" width="800">
 </p>
-
-> ```pt```: pre-trained, ```fs```: from scratch
-
-```b_in21k_pt``` performs best, let alone ```l_pt``` is bigger in size. Training from scratch converges obviously slower.
-This result emphasizes the importance of the size of dataset in pre-train stage, in21k is almost 10 time bigger.
-
-
-
 
 ## Reference
 - [```timm``` library](https://github.com/rwightman/pytorch-image-models), Ross Wightman.
