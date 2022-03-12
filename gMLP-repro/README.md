@@ -1,5 +1,5 @@
 # gMLP for image classification in CV
-* Paper: [Pay Attention to MLPs](https://arxiv.org/abs/2105.08050), Google Research, Brain Team, June, 2021.
+* Paper: [Pay Attention to MLPs](https://arxiv.org/abs/2105.08050), Google Research, Brain Team, June, 2021. \
 **Attention: This implementation can load the official pre-trained weights, both share the same namespace.**
 > Note: The official pre-trained weights refer to the [```timm``` library](https://github.com/rwightman/pytorch-image-models) release.
 
