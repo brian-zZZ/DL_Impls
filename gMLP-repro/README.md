@@ -1,7 +1,7 @@
 # gMLP: [Pay Attention to MLPs](https://arxiv.org/abs/2105.08050), Google Brain, June 2021.
 gMLP performs better than MLP-Mixer, further more, gMLP attains competitive results in various tasks, including both CV and NLP. \
 The most impressive conclusion from the paper is that Attention may be unnecessary for Transformers, 
-meanwhile Attention may introduce more inductive bias, which is importance for downstream tasks that require cross-sentence infomation. \
+meanwhile Attention may introduce more inductive bias, which is importance for downstream tasks that require cross-sentence infomation.
 
 **Attention: This implementation can load the official pre-trained weights, both share the same namespace.**
 > Note: The official pre-trained weights refer to the [```timm``` library](https://github.com/rwightman/pytorch-image-models) release.
@@ -30,6 +30,8 @@ python main_finetune.py --num_classes 5 \
 <p align="center">
 <img src="result.png" width="800">
 </p>
+
+From the figure, we can tell that 10 epochs are too much for such a small dataset to fine-tune, resulting in a over-fitting phenomenon.
 
 ## Reference
 - [```timm``` library](https://github.com/rwightman/pytorch-image-models), Ross Wightman.
