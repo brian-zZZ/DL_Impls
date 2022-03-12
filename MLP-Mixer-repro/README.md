@@ -22,7 +22,7 @@ python main_finetune.py --num_classes 5 \
 
 * Results
 
-> From top-left to bottom-right, train acc, loss and val acc, loss
+> From top-left to bottom-right: train acc, loss and val acc, loss
 <p align="center">
 <img src="result.png" width="800">
 </p>
