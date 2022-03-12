@@ -127,7 +127,7 @@ def mixer_l16_224_in21k(pretrained=False, **kwargs):
 
 if __name__ == '__main__':
     num_classes = 1000
-    mlp_mixer = mixer_s16_224(pretrained=True, num_classes=num_classes)
+    mlp_mixer = mixer_b16_224_in21k(pretrained=True, num_classes=num_classes)
     print(mlp_mixer)
 
     input = torch.randn(1, 3, 224, 224)
