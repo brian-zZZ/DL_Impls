@@ -28,7 +28,7 @@ python -m torch.distributed.launch --nproc_per_node=8 main.py \
 ```
 
 ## Results
-Follow the official pre-trianed recipe, results on CIFAR-10:
+Follow the official fine-tuning recipe, results on CIFAR-10:
 <p align="center">
 <img src="./wandb/result_comp.png" width=100% height=100% 
 class="center">
