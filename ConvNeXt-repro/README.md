@@ -1,11 +1,5 @@
 # [A ConvNet for the 2020s](https://arxiv.org/abs/2201.03545)
 
-Official PyTorch implementation of **ConvNeXt**, from the following paper:
-
-[A ConvNet for the 2020s](https://arxiv.org/abs/2201.03545). CVPR 2022.\
-[Zhuang Liu](https://liuzhuang13.github.io), [Hanzi Mao](https://hanzimao.me/), [Chao-Yuan Wu](https://chaoyuan.org/), [Christoph Feichtenhofer](https://feichtenhofer.github.io/), [Trevor Darrell](https://people.eecs.berkeley.edu/~trevor/) and [Saining Xie](https://sainingxie.com)\
-Facebook AI Research, UC Berkeley
-
 --- 
 
 <p align="center">
@@ -18,7 +12,7 @@ class="center">
 ## Fine-tuning
 * Specify ```finetune```: local path or remote official url
 * Specify ```data_set```: 'CIFAR', 'IMNET' or 'image_folder'.
-    Set 'CIFAR' to download from torchvison, 'IMGET' for ImageNet, and 'image_folder' for customized dataset.
+    Set 'CIFAR' to download from torchvision, 'IMGET' for ImageNet, and 'image_folder' for customized dataset.
 * Specify ```data_path``` and ```nb_classes```: if ```data_set``` is 'image_folder'
 ```bash
 python -m torch.distributed.launch --nproc_per_node=8 main.py \
