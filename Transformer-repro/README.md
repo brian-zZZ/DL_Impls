@@ -23,7 +23,7 @@ python -m spacy download en
 python -m spacy download de
 ```
 - Way 2. If Way 1 encounter connection error.
-  - Download [en_core_web_sm-2.3.0](https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.0/en_core_web_sm-2.3.0.tar.gz) and [de_core_news_sm-2.3.0](https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.0/en_core_web_sm-2.3.0.tar.gz) to local.
+  - Download [en_core_web_sm-2.3.0](https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.0/en_core_web_sm-2.3.0.tar.gz) and [de_core_news_sm-2.3.0](https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-2.3.0/de_core_news_sm-2.3.0.tar.gz) to local.
   - Pip install these two packages identically. \
   ```pip install 'some_dir/pk'```
 
